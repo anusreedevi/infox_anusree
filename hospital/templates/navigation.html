@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <title>MEDICARE</title>
+  <link rel="icon" href="images/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel = stylesheet href = "//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
+<style>
+.nav-link:hover{
+  color: rgb(20, 22, 22) !important;
+  font-weight:bold;
+  background-color : #80c5c2;
+  border-radius:10px
+}
+.nav-link{
+  font-weight:bold;
+}
+
+.navbar-brand{
+
+  text-shadow: 1px 1px lightblue;
+
+}
+.navbar-brand:hover{
+  color: #80F5D3 !important;
+}
+.navbar{
+  background-color:#10946e;
+
+}
+.bg-color{
+  background-color: #da0f0c;
+  color: rgb(240, 233, 233);
+}
+/* .navbar-toggler{
+  background-color: white; 
+
+} */
+</style>
+<!-- <link rel="stylesheet" href="{% static 'css/s.css' %}"> -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body style="background-color: #f0f1f2;">
+<nav class="navbar navbar-expand-lg">
+  <!-- Brand -->
+  <a class="navbar-brand pl-5" href="#" style=" color:white;font-weight:bold"><i class="fas fa-heartbeat"></i>MEDICARE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"><i class="far fa-hand-point-down"></i></span>
+    
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <!-- Links -->
+   <ul class="navbar-nav pl-5 text-center">
+
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'index' %}" style="color:white"><ion-icon style="margin-right:2px" name="home-sharp"></ion-icon> Home</a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'about' %}" style="color:white"><ion-icon style="margin-right:2px" name="people"></ion-icon> About</a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'contact' %}" style="color:white"><ion-icon style="margin-right:2px" name="people"></ion-icon> Contact</a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'login' %}" style="color:white"><i class="fas fa-sign-in-alt" style="margin-right:2px"></i> Admin Login <span style="margin-left:3px;" class="badge bg-color">{{count}}</span></a>
+     </li>
+
+   </ul>
+
+</div>
+</nav>
+
+{% block body %}
+{% endblock %}
+</body></html>

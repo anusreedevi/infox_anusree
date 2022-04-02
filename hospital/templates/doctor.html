@@ -1,0 +1,48 @@
+
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+</head>
+<link rel="stylesheet" href="{% static 'css/s.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<body>
+    <!-- doctors section starts  -->
+
+<section class="doctors" id="doctors">
+
+    <h1 class="heading"> our <span>doctors</span> </h1>
+
+    <div class="box-container">
+        {% for i in doc %}
+
+        <div class="box">
+
+            <img src="{{i.image.url}}" alt="">
+            <h3>{{i.name}}</h3>
+            <span>{{i.special}}</span><br>
+            <span>{{i.mob}}</span>
+
+
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    
+
+       
+</section>
+{% endblock %}
