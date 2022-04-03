@@ -1,1 +1,1 @@
-# django_anu
+# infox_anu
