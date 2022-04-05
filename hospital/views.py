@@ -15,9 +15,8 @@ def About(request):
     return render(request,'about.html')
 
 def Index(request):
-    count=len(Contact.objects.filter(isread="no"))
+    return render(request,'index.html')
 
-    return render(request,'index.html',{'count':count})
 def doctor(request):
     doc = Doctor.objects.all()
     d = {'doc':doc}
@@ -38,6 +37,7 @@ def contact(request):
             error = "yes"
     return render(request, 'contact.html', locals())
 
+
 def adminlogin(request):
     error = ""
     if request.method == 'POST':
@@ -54,14 +54,15 @@ def adminlogin(request):
             error = "yes"
     return render(request,'login.html', locals())
 
+
 def admin_home(request):
     if not request.user.is_authenticated:
         return redirect('login_admin')
     dc = Doctor.objects.all().count()
     pc = Patient.objects.all().count()
     ac = Appointment.objects.all().count()
-
-    d = {'dc': dc, 'pc': pc, 'ac': ac}
+    uq = len(Contact.objects.filter(isread="no"))
+    d = {'dc': dc, 'pc': pc, 'ac': ac,'uq':uq}
     return render(request,'admin_home.html', d)
 
 def Logout(request):
@@ -109,8 +110,6 @@ def edit_doctor(request,pid):
         n1 = request.POST['name']
         m1 = request.POST['mobile']
         s1 = request.POST['special']
-
-
         doctor.name = n1
         doctor.mob = m1
         doctor.special = s1
@@ -121,6 +120,7 @@ def edit_doctor(request,pid):
         except:
             error = "yes"
     return render(request, 'edit_doctor.html', locals())
+
 
 def add_patient(request):
     error = ""
@@ -139,6 +139,7 @@ def add_patient(request):
             error = "yes"
     return render(request,'add_patient.html', locals())
 
+
 def view_patient(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -146,12 +147,14 @@ def view_patient(request):
     d = {'pat':pat}
     return render(request,'view_patient.html', d)
 
+
 def Delete_Patient(request,pid):
     if not request.user.is_authenticated:
         return redirect('login')
     patient = Patient.objects.get(id=pid)
     patient.delete()
     return redirect('view_patient')
+
 
 def edit_patient(request,pid):
     error = ""
@@ -177,6 +180,7 @@ def edit_patient(request,pid):
         except:
             error = "yes"
     return render(request, 'edit_patient.html', locals())
+
 
 def add_appointment(request):
     error=""
@@ -204,11 +208,10 @@ def add_appointment(request):
             error="no"
             return redirect('view_appointment')
         except:
-            error="yes"
-
-       
+            error="yes" 
     d = {'doctor':doctor1,'patient':patient1,'error':error}
     return render(request,'add_appointment.html', d)
+
 
 def view_appointment(request):
     if not request.user.is_authenticated:
@@ -228,8 +231,7 @@ def unread_queries(request):
     if not request.user.is_authenticated:
         return redirect('login')
     contact = Contact.objects.filter(isread="no")
-    # print(count)
-    return render(request,'unread_queries.html', locals())
+    return render(request,'unread_queries.html',locals())
 
 
 def read_queries(request):
@@ -237,8 +239,8 @@ def read_queries(request):
         return redirect('login')
     contact = Contact.objects.filter(isread="yes")
     contact.isread = "yes"
-
     return render(request,'read_queries.html', locals())
+
 
 def view_queries(request,pid):
     if not request.user.is_authenticated:

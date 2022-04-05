@@ -10,8 +10,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 's.css' %}">
+
 
 
   <style media="screen">
@@ -189,6 +190,10 @@
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
 }
+.bg-color{
+  background-color: #f10a06;
+  color: rgb(240, 233, 233);
+}
   </style>
 </head>
 <body>
@@ -233,9 +238,9 @@
 
         <li tabindex="0" class="nav-item dropdown icon-calendar">
         <a href="" class="nav-link dropdown-toggle text-dark bg-light" id="navbardrop"
-				data-toggle="dropdown" style="color:white; text-decoration:none;"> View Queries</a>
+				data-toggle="dropdown" style="color:white; text-decoration:none;"> View Queries<span style="margin-left:3px;" class="badge bg-danger">{{uq}}</span></a>
 				<div class="dropdown-menu">
-					<a href="{% url 'unread_queries' %}" class="dropdown-item">Unread Queries</a>
+					<a href="{% url 'unread_queries' %}" class="dropdown-item">Unread Queries<span style="margin-left:3px;" class="badge bg-danger">{{uq}}</span></a>
 					<a href="{% url 'read_queries' %}" class="dropdown-item">Read Queries</a>
 				</div>
       </li>
