@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block banner_slider %}
+<style>
+  h2{
+    text-align: center;
+    padding: 40px;
+    font-size: 40px;
+    font-family: Cinzel, serif;        text-align: center;
+    font-weight: bold;
+
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">   
+
+<!--Banner Slider-->
+ <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/banner/ban1.jpg' %}" class="d-block w-100" alt="..."> 
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/banner/b5.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/banner/ban3.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/banner/ban4.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %}
+
+{% block livesale %}
+<!-- Live Sale Section -->
+<div class="container">
+  <img src="{% static 'images/banner/ban.jpg' %}" class="w-100">
+</div> 
+<!-- End Live Sale Section -->
+{% endblock livesale %}
+
+{% block main-content %}
+<!-- 1st Product Slider -->
+<div class="j-3">
+ <h2>FASHIONWORLD BOTTOM WEARS</h2>
+ <!-- Slider 1 -->
+ <div class="owl-carousel" id="slider1">
+  {% for b in bottomwears %}
+    <a href="{% url 'product-detail' b.id %}" class="btn"><div class="item"><img src="{{b.product_image.url}}" alt="" height="300px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 1st Product Slider -->
+
+<!-- Payment Info Section -->
+
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+ <h2>FASHIONWORLD TOP WEARS</h2>
+ <!-- Slider 2 -->
+ <div class="owl-carousel" id="slider2">
+  {% for tp in topwears %}
+    <a href="#" class="btn"><div class="item"><img src="{{tp.product_image.url}}" alt="" height="300"><span class="fw-bold">{{tp.title}}</span><br><span class="fs-5">Rs. {{tp.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 2nd Product Slider -->
+
+<!-- 3rd Product Slider -->
+<div class="mx-3">
+  <h2>FASHIONWORLD JEWELLERIES</h2>
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+   {% for j in jewelleries %}
+     <a href="{% url 'product-detail' j.id %}" class="btn"><div class="item"><img src="{{j.product_image.url}}" alt="" height="300"><span class="fw-bold">{{j.title}}</span><br><span class="fs-5">Rs. {{j.discounted_price}}</span></div></a>
+   {% endfor %}
+  </div>
+ </div>
+<!-- End 2nd Product Slider -->
+{% endblock main-content %}
+
